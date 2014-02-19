@@ -30,7 +30,7 @@ class Capistrano::Git < Capistrano::SCM
     end
 
     def release
-      git :archive, fetch(:branch), '| tar -x -C', release_path
+      git '-c tar.umask 0002', :archive, fetch(:branch), '| tar -x -C', release_path
     end
   end
 end
